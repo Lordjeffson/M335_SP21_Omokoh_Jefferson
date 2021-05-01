@@ -1,0 +1,37 @@
+---
+title: "Case Study 2"
+author: "Jefferson Omokoh"
+date: "5/1/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Questions
+
+1. What has been the main factor influencing the Growth of Gross Domestic Product across developed countries over the last 60 years?
+
+*I find it intriguing to see the trends of countries development process, but more than that I want to know why those developmental changes are happening. Is it just luck, or are developed countries across the world doing something that if adopted by every country would help increase GDP?* From the feedback I got, they think my question is interesting and it will be possible to answer in a semester.
+
+I was able to find some information about Economic Growth of countries here, [Which countries achieved economic growth? And why does it matter>](https://ourworldindata.org/economic-growth-since-1950). I took note of this research and article because it is quite similar to the question that I would like answered, however, it differs in the aspect of knowing the main factor that has caused that growth, that is what I want to focus on.
+
+
+
+2. Does population growth keep increasing in countries where there are crisis (war, terrorism), if it does or if it does not, why?
+
+*Lately, there has been a spike in population growth in many third world countries* [population Growth Concentrated Among the Poorest Communities](https://www.prb.org/population-growth-concentrated-among-the-poorest-communities/). *However, there is often some sort of unrest in these countries, so I would like to know if Economic hardship increases fertility rate (haha), or if Economic and social crisis increases birthrate.* For this, I was told that it was interesting as well, however, that I would need to gather a lot of data and they are not sure if I will be able to do it within a semester.
+
+I could not find data specific to countries in crisis, but I found data about population growth challenges in poor nation on [Population growth challenges poor nations](https://www.dw.com/en/population-growth-challenges-poor-nations/a-17010329). So, I may need to dig deeper to find data that will be vital in helping me answer this question.
+
+3. What is the educational background of different world leaders, and do we see more development in countries where the leader has a considerable amount of educational training?
+
+*This is some information about what world leaders studied in school,* [What did World Leaders Study at school?](https://www.visualcapitalist.com/education-of-world-leaders/). *I will like to do some data analysis about the Educational background of world leaders, and if it influences their policies for good or bad.*
+
+Like the information in the article above, there is some data available to answer this question already. I may just need to gather sufficient data that fits my specific purpose.
+
+
+
+
+
