@@ -1,0 +1,142 @@
+---
+title: "Data Visualization"
+author: "Jefferson Omokoh"
+date: "5/2/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+- ggplot2 implements the grammar of graphics
+
+- ggplot2 is one of the core members of the tidyverse package
+
+Question: Do cars with big engines use more fuel than cars with small engines?
+
+*Dataframe: is a rectangular collection of variables (in the columns) and observation (in the rows).* 
+
+```{r}
+mpg
+?mpg
+```
+```{r}
+ggplot(mpg, aes(x = displ, y = hwy)) +
+  geom_point()
+```
+The above graph shows a positive relationship between engine size(displ) and fuel efficiency (hwy), cars with big engines use more fuel. 
+
+- geom_point() adds a layer of points to my plot
+- ggplot2 comes with many geom functions that each add a different type of layer to a plot
+
+*A graphing template*
+ggplot(data = <DATA>) +
+  GEOM_FUNCTION>(mapping = aes(<MAPPINGS>))
+  
+```{r}
+mpg %>% glimpse()
+
+ggplot(mpg, aes(x = class, y = drv)) +
+  geom_point()
+```
+  
+- The above graph is not useful because it does not give information about a relationship that exist.
+
+*Aesthetic mappings*
+- I can add a third variable, like class, to a two dimensional scatterplot by mapping it to an aesthetic.
+- Aesthetic: is a visual property of the objects in my plot. Aesthetics include things like the shape, the size, or the color of my points.
+- **I can convey information about my data by mapping the aesthetics in my plot to the variables in my dataset**
+
+```{r}
+ggplot(mpg, aes(x = displ, y = hwy, color =  class)) +
+  geom_point()
+```
+To map an aesthetic to a variable, associate the name of the aesthetic to the name of the variable inside aes(). ggplot2 will automatically assign a unique level of the aesthetic (here a unique color) to each unique value of the variable, a process known as *scaling*. ggplot2 will also add a legend that explains which levels correspond to which values.
+
+- We can also map class to the size aesthetic, see below
+
+```{r}
+ggplot(mpg, aes(x = displ, y = hwy, size = class)) + 
+  geom_point()
+```
+- We can also use the alpha aesthetic, which controls the transparency of the points, or to the shape aesthetic, which controls the shape of the points
+
+```{r}
+ggplot(mpg, aes(x = displ, y = hwy, alpha = class)) +
+  geom_point()
+
+ggplot(mpg, aes(x = displ, y = hwy, shape = class)) +
+  geom_point()
+```
+- Alpha assign different transparency to the different classes, while shape assigns different shapes to the different classes. Note: the shape aesthetic can only take 6 shapes at a time, and by default the additional groups will go unplotted.
+
+
+- Setting the aesthetic property of my geom manually.
+
+```{r}
+ggplot(mpg, aes(x = displ, y = hwy)) +
+  geom_point(color = 'blue')
+```
+- To set an aesthetic manually, set the aesthetic by name as an argument of geom function, i.e it goes outside of aes()
+
+
+*Facets*
+Facets: subplots that each display one subset of data
+- To facet your plot by a single variable, use facet_wrap()
+- The first argument in a facet_wrap should be a formula, which you create with ~ followed by a variable name.
+- The variable that I pass to facet_wrap() should be discrete
+
+```{r}
+ggplot(mpg, aes(x = displ, y = hwy)) + 
+  geom_point() +
+  facet_wrap(~ class, nrow = 2)
+```
+- To facet my plot on the combination of two variables, add facet_grid() to the plot call.
+
+```{r}
+ggplot(mpg, aes(x = displ, y = hwy)) + 
+  geom_point() +
+  facet_grid(drv ~ cyl)
+```
+- If I would rather not facet in the rows or columns dimension, I can use a . instead of a variable name, e.g. + facet_grid(. ~ cyl). 
+
+
+*Geometric objects*
+- We can use different visuals in ggplot by using different geoms.
+*geom:* is a geometrical object that a plot uses to represent data. 
+
+
+```{r}
+ggplot(mpg, aes(x = displ, y = hwy)) + 
+  geom_smooth()
+```
+
+****
+```{r}
+ggplot(mpg, aes(x = displ, y = hwy,linetype = drv)) +
+  geom_smooth()
+```
+
+- in the above plot geom_smooth() separates the cars into three lines based on their drv value, which describes a car's drivetrain.
+
+
+```{r}
+ggplot(data = mpg) +
+  geom_smooth(mapping = aes(x = displ, y = hwy))
+              
+ggplot(data = mpg) +
+  geom_smooth(mapping = aes(x = displ, y = hwy, group = drv))
+    
+ggplot(data = mpg) +
+  geom_smooth(
+    mapping = aes(x = displ, y = hwy, color = drv),
+    show.legend = FALSE
+  )
+```
+
+
+
+
+
+
